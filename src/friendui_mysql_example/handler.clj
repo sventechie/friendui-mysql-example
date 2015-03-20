@@ -1,6 +1,7 @@
 (ns friendui-mysql-example.handler
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
+            [compojure.handler :as handler]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [cemerick.friend :as friend]
             [cemerick.friend [workflows :as workflows]
@@ -8,9 +9,11 @@
             [de.sveri.friendui.routes.user :refer [friend-routes]]
             [sventechie.friendui-mysql.db :refer :all]
             [sventechie.friendui-mysql.storage :refer :all])
+
   (:use [sventechie.friendui-mysql.storage FrienduiStorage]))
 
 (def FrienduiStorageImpl (->FrienduiStorage))
+
 (def friend-settings
   {:credential-fn             (partial creds/bcrypt-credential-fn
                                        (get-all-users (FrienduiStorageImpl)))
@@ -27,7 +30,10 @@
 
 (defroutes app-routes
   (GET "/" [] "Hello World")
+  (friend-routes FrienduiStorageImpl)
   (route/not-found "Not Found"))
 
 (def app
-  (wrap-defaults app-routes site-defaults))
+  (-> app-routes
+     (wrap-defaults site-defaults)
+     (authenticate-routes)))
