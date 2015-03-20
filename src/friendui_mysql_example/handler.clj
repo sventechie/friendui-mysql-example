@@ -8,15 +8,15 @@
                              [credentials :as creds]]
             [de.sveri.friendui.routes.user :refer [friend-routes]]
             [sventechie.friendui-mysql.db :refer :all]
-            [sventechie.friendui-mysql.storage :refer :all])
+            [sventechie.friendui-mysql.storage :refer :all]
+            [sventechie.friendui-mysql.globals :refer :all])
 
-  (:use [sventechie.friendui-mysql.storage FrienduiStorage]))
+  (:import [sventechie.friendui-mysql.storage.FrienduiStorage]))
 
-(def FrienduiStorageImpl (->FrienduiStorage))
+(def FrienduiStorageImpl (->FrienduiStorage database))
 
 (def friend-settings
-  {:credential-fn             (partial creds/bcrypt-credential-fn
-                                       (get-all-users (FrienduiStorageImpl)))
+  {:credential-fn             (partial creds/bcrypt-credential-fn get-usermap-by-username)
    :workflows                 [(workflows/interactive-form)]
    :login-uri                 "/user/login"
    :unauthorized-redirect-uri "/user/login"
