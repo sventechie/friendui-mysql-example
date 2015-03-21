@@ -1,4 +1,4 @@
-(defproject friendui-mysql-example "0.1.0-SNAPSHOT"
+(defproject friendui-mysql-example "0.1.0"
   :description "Example of using friendui-mysql in a compojure app"
   :url "http://example.com/FIXME"
   :min-lein-version "2.0.0"

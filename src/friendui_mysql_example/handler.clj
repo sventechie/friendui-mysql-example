@@ -38,6 +38,7 @@
   (handler/site
     (friend/authenticate routes-set friend-settings)))
 
+;; add callbacks as second arg to friend-routes below
 (def friendui-callbacks {:signup-succ-func (fn[] "success")
                          :activate-account-succ-func (fn[user-map] "activated")})
 
