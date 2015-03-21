@@ -10,7 +10,7 @@
     ;you will have to provide a map which will be passed directly to postal like this:
     ; :smtp-data {:host "host" :port 25 ...} see: https://github.com/drewr/postal for more
   :activation-mail-subject "Please activate your account."
-  :activation-mail-body "Please click on this link to activate your account: {{activationlink}}.Best Regards,Your Example-Team"
+  :activation-mail-body "Please click on this link to activate your account: {{activationlink}}. Best Regards, Your Example-Team"
 
   :base-template-content-key :content ; the key where the base template expects the page content
   :base-template-title-key :title ; the key where the base template expects the page title
