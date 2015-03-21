@@ -27,9 +27,9 @@
 (def template-path "templates/de/sveri/friendui/user/")
 ;(alter-var-root #'f-global/template-path template-path)
 (html/deftemplate base (str template-path "base.html")
-                  [{:keys [title main]}]
-                  [:#title] (utils/maybe-content title)      ; :base-template-title-key key in the config
-                  [:#content] (utils/maybe-substitute main)) ; :base-template-content-key key in the config
+                  [{:keys [title content]}]
+                  [:#title] (utils/maybe-content title)         ; :base-template-title-key key in the config
+                  [:#content] (utils/maybe-substitute content)) ; :base-template-content-key key in the config
 
 (alter-var-root #'f-global/base-template (fn [_] (partial base)))
 
