@@ -25,7 +25,6 @@
    :default-landing-uri       "/"})
 
 (def template-path "templates/de/sveri/friendui/user/")
-;(alter-var-root #'f-global/template-path template-path)
 (html/deftemplate base (str template-path "base.html")
                   [{:keys [title content]}]
                   [:#title] (utils/maybe-content title)         ; :base-template-title-key key in the config
