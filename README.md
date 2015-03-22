@@ -2,6 +2,10 @@
 
 Example of using [friendui-mysql](https://github.com/sventechie/friendui-mysql)
 
+## Deprecated
+I've switched to using the SQL Korma DB abstraction layer. Please use
+<https://github.com/sventechie/friendui-sql-example/> instead. It supports both MySQL and PostgreSQL,and with a little work, any other JDBC database.
+
 ## Prerequisites
 
 You will need [Leiningen][] 2.0.0 or above installed.
